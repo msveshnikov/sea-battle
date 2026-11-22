@@ -429,13 +429,13 @@ def layout(data_islands):
         "buoys": corners,
         "islands": data_islands,
         "beacon": {"x": -46 + 2, "y": 0, "z": -14 + 2},
-        "cameras": {"title": {"pos": [-30, 9, 70], "target": [0, 4, 26]}, "placement": {"pos": [0, 44, 62], "target": [0, 0, 31]}, "attack": {"pos": [0, 38, 40], "target": [0, 0, -21]}, "defense": {"pos": [0, 36, -14], "target": [0, 0, 25]}, "overview": {"pos": [64, 52, 8], "target": [0, 0, 0]}},
+        "cameras": {"title": {"pos": [-30, 9, 70], "target": [0, 4, 26]}, "placement": {"pos": [0, 50, 57], "target": [0, 0, 30]}, "attack": {"pos": [0, 44, 14], "target": [0, 0, -30]}, "defense": {"pos": [0, 36, -14], "target": [0, 0, 25]}, "overview": {"pos": [64, 52, 8], "target": [0, 0, 0]}},
         "moods": {
             "day": {"sun_dir": [-0.45, -0.75, -0.48], "sun_color": [1.0, 0.95, 0.85], "sun_energy": 1.3,
                     "sky_top": [0.18, 0.42, 0.78], "sky_horizon": [0.72, 0.86, 0.95], "ambient": 0.42,
                     "water_deep": [0.02, 0.2, 0.3], "water_shallow": [0.1, 0.75, 0.72], "fog": 0.0012, "lights": False},
             "sunset": {"sun_dir": [0.75, -0.28, 0.6], "sun_color": [1.0, 0.8, 0.62], "sun_energy": 1.2, "sky_top": [0.22, 0.3, 0.6], "sky_horizon": [0.98, 0.66, 0.5], "ambient": 0.5, "water_deep": [0.02, 0.12, 0.22], "water_shallow": [0.12, 0.5, 0.55], "fog": 0.0018, "lights": True},
-            "night": {"sun_dir": [-0.3, -0.6, 0.7], "sun_color": [0.6, 0.7, 1.0], "sun_energy": 0.45, "sky_top": [0.01, 0.02, 0.07], "sky_horizon": [0.07, 0.12, 0.25], "ambient": 0.35, "water_deep": [0.01, 0.05, 0.1], "water_shallow": [0.04, 0.2, 0.25], "fog": 0.003, "lights": True},
+            "night": {"sun_dir": [-0.3, -0.65, 0.7], "sun_color": [0.68, 0.78, 1.0], "sun_energy": 0.9, "sky_top": [0.02, 0.04, 0.11], "sky_horizon": [0.1, 0.16, 0.32], "ambient": 0.7, "water_deep": [0.02, 0.08, 0.15], "water_shallow": [0.05, 0.26, 0.32], "fog": 0.0025, "lights": True},
         },
     }
     os.makedirs(LEVELS, exist_ok=True)

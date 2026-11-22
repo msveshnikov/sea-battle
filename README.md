@@ -1,4 +1,4 @@
-# Steel Tide — Морской бой 3D
+# Sea Battle — Морской бой 3D
 
 A 3D remake of the old Cordova "Sea Battle" (kept in `legacy/`). Two fleets anchor in a tropical
 archipelago, each side's waters are a glowing holographic 10×10 grid on an animated ocean.
@@ -14,7 +14,7 @@ marker buoys, hits set hidden ships on fire, sunk ships surface burning and go u
 - **Time of day**: day, sunset, night (searchlights, lit windows, lighthouse beam, buoy lamps).
 - English / Russian UI. Windows, Web, Android.
 
-Play: https://maxims.top/seabattle/ · APK: https://maxims.top/seabattle/SteelTide.apk
+Play: https://maxims.top/seabattle/ · APK: https://maxims.top/seabattle/SeaBattle.apk
 
 ## How it is made (game-pipeline)
 
@@ -49,10 +49,10 @@ Screenshots and `autotest.log` go to `renders/game/`.
 
 ### Build and deploy
 ```
-godot --headless --path . --export-release "Windows Desktop" build/windows/SteelTide.exe
+godot --headless --path . --export-release "Windows Desktop" build/windows/SeaBattle.exe
 godot --headless --path . --export-release "Web" build/web/index.html
-godot --headless --path . --export-debug "Android" build/android/SteelTide.apk
-scp build/web/* build/android/SteelTide.apk ubuntu@severance.lol:/var/www/maxims/seabattle/
+godot --headless --path . --export-debug "Android" build/android/SeaBattle.apk
+scp build/web/* build/android/SeaBattle.apk ubuntu@severance.lol:/var/www/maxims/seabattle/
 ```
 
 ## Code map
@@ -61,4 +61,4 @@ scp build/web/* build/android/SteelTide.apk ubuntu@severance.lol:/var/www/maxims
 - `scripts/arena.gd` builds the world from the layout JSON, moods, projectiles; `grid_view.gd` holographic grids + markers; `ship_view.gd` ships (aim, fire, burn, sink); `fx.gd` particles; `camera_rig.gd` cinematic camera.
 - `scripts/hud.gd`, `ui_kit.gd`, `fleet_panel.gd` UI; `game.gd` settings/strings; `sfx.gd` sound.
 - Shaders: `shaders/water|sky|grid|foam.gdshader` (all Compatibility-safe).
-- Multiplayer uses the existing room relay `wss://severance.lol/village-ws` (source: `C:\My-progs\Godot\village\server\relay.js`), rooms prefixed `steeltide-`.
+- Multiplayer uses the existing room relay `wss://severance.lol/village-ws` (source: `C:\My-progs\Godot\village\server\relay.js`), rooms prefixed `seabattle-`.

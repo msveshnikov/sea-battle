@@ -1,4 +1,4 @@
-"""Paint every texture of Steel Tide with numpy (run with system Python: numpy + pillow).
+"""Paint every texture of Sea Battle with numpy (run with system Python: numpy + pillow).
 
     python blender/scripts/make_textures.py
 

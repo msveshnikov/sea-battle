@@ -1,4 +1,4 @@
-# Steel Tide — task files (game-pipeline)
+# Sea Battle — task files (game-pipeline)
 
 Run 1 (this vertical slice = the whole game, one arena) was done in a single session on 2026-11-22.
 Each task below is written so a fresh autonomous Claude Code session can redo or extend it

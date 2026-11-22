@@ -1,4 +1,4 @@
-"""Synthesize every sound of Steel Tide with numpy (no downloads): python scripts/tools/make_audio.py
+"""Synthesize every sound of Sea Battle with numpy (no downloads): python scripts/tools/make_audio.py
 Writes 16-bit mono WAVs (44.1 kHz) into assets/audio/. Music is a procedural loop."""
 import os
 import wave

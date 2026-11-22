@@ -1,4 +1,4 @@
-# Steel Tide (Морской бой: Стальной прилив) — concept art and tasks
+# Sea Battle (Морской бой) — concept art and tasks
 
 ## 1. Pitch
 A 3D remake of the classic 10×10 Sea Battle. Two fleets anchor in a tropical archipelago; each

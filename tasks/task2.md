@@ -5,7 +5,7 @@ Block A (fully autonomous, decisions.md / issues.md / report_task2.md) and Block
 free assets only) of the game-pipeline skill apply.
 
 ## Goal
-Warships for Steel Tide in the style of `concept/ships/fleet_sheet.png` and `concept/scenes/battle_day.png`:
+Warships for Sea Battle in the style of `concept/ships/fleet_sheet.png` and `concept/scenes/battle_day.png`:
 chunky slightly toy-like 1940s warships, dark battleship grey, red anti-fouling with a black boot-top,
 teak decks, orange funnel bands and accents.
 

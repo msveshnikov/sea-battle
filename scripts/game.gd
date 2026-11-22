@@ -22,8 +22,8 @@ var stats := {"wins": 0, "losses": 0, "shots": 0, "hits": 0, "online_wins": 0}
 var flags := {}
 
 const STRINGS := {
-	"title": ["STEEL TIDE", "СТАЛЬНОЙ ПРИЛИВ"],
-	"subtitle": ["Sea Battle", "Морской бой"],
+	"title": ["SEA BATTLE", "МОРСКОЙ БОЙ"],
+	"subtitle": ["Fleet vs fleet", "Флот против флота"],
 	"play_ai": ["Battle vs AI", "Бой с компьютером"],
 	"online": ["Online Duel", "Онлайн-дуэль"],
 	"settings": ["Settings", "Настройки"],

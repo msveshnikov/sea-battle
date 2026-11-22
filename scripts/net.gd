@@ -1,7 +1,7 @@
 extends Node
 ## Autoload "Net": WebSocket link to the room relay (a dumb hub: it stamps each JSON message with the
 ## sender id and forwards it to everyone else in the same room; see server/README.md).
-## Steel Tide uses rooms "steeltide-<...>": a shared quick-match lobby per rule set, and private
+## Sea Battle uses rooms "seabattle-<...>": a shared quick-match lobby per rule set, and private
 ## rooms by a 4-letter code. Server override: `-- --server=ws://127.0.0.1:8091` or `?server=` on web.
 
 signal message_received(from: int, data: Dictionary)
@@ -10,7 +10,7 @@ signal peer_left(id: int)
 signal connection_changed(is_online: bool)
 
 const DEFAULT_SERVER := "wss://severance.lol/village-ws"
-const PREFIX := "steeltide-"
+const PREFIX := "seabattle-"
 
 var my_id := 0
 var host_id := 0

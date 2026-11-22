@@ -14,6 +14,10 @@ uniform int island_count = 0;
 uniform float wave_amp = 0.22;
 uniform float flat_far = 0.0; // 1 on the far horizon plane: no displacement
 uniform float sparkle = 1.0;
+// calm water inside both grids so the waves never wash over the anchored hulls
+uniform vec2 grid_a = vec2(0.0, 28.0);
+uniform vec2 grid_b = vec2(0.0, -28.0);
+uniform float grid_half = 22.0;
 
 varying vec3 wpos;
 varying float crest;
@@ -36,6 +40,10 @@ void vertex() {
 	wpos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	if (flat_far < 0.5) {
 		float fade = 1.0 - smoothstep(120.0, 220.0, length(wpos.xz));
+		vec2 da = max(abs(wpos.xz - grid_a) - vec2(grid_half), vec2(0.0));
+		vec2 db = max(abs(wpos.xz - grid_b) - vec2(grid_half), vec2(0.0));
+		float calm = 1.0 - smoothstep(0.0, 10.0, min(length(da), length(db)));
+		fade *= mix(1.0, 0.12, calm);
 		vec3 w = waves(wpos.xz) * fade;
 		VERTEX.y += w.x;
 		NORMAL = normalize(vec3(-w.y, 1.0, -w.z));

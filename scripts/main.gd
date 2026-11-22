@@ -1,5 +1,5 @@
 extends Node3D
-## Steel Tide: game flow. Title → (AI setup | online lobby) → fleet placement → battle → game over.
+## Sea Battle: game flow. Title → (AI setup | online lobby) → fleet placement → battle → game over.
 ## Both opponents (AI or remote player) go through the same "action → outcome → animation" path:
 ##   action  {kind: shell|torpedo|airstrike|radar, cell: [x, y]}
 ##   outcome {kind, cell, results: [{c, r, ship?, kind?}], radar?: n, lost?: bool}
@@ -379,12 +379,14 @@ func _start_battle(i_start: bool) -> void:
 
 
 # ------------------------------------------------------------------ turns
-func _begin_my_turn() -> void:
+## keep_view: after a hit the turn continues, so leave the camera exactly where the player put it.
+func _begin_my_turn(keep_view := false) -> void:
 	_armed_cell = Vector2i(-1, -1)
 	my_turn = true
 	busy = false
 	selected_ability = ""
-	cam.go_preset(arena.layout["cameras"]["attack"], 1.3)
+	if not keep_view:
+		cam.go_preset(arena.layout["cameras"]["attack"], 1.3)
 	arena.enemy_grid.set_active(true)
 	arena.player_grid.set_active(false)
 	hud.set_banner(Game.t("your_turn"), Color(1, 0.85, 0.5))
@@ -393,7 +395,7 @@ func _begin_my_turn() -> void:
 		autotest.call_deferred("my_turn")
 
 
-func _begin_enemy_turn() -> void:
+func _begin_enemy_turn(keep_view := false) -> void:
 	my_turn = false
 	busy = true
 	arena.enemy_grid.clear_overlay()
@@ -401,7 +403,8 @@ func _begin_enemy_turn() -> void:
 	arena.player_grid.set_active(true)
 	hud.set_banner(Game.t("enemy_turn") if not online else Game.t("waiting_enemy"), UiKit.RED)
 	hud.set_abilities(charges, "", false)
-	cam.go_preset(arena.layout["cameras"]["defense"], 1.4)
+	if not keep_view:
+		cam.go_preset(arena.layout["cameras"]["defense"], 1.4)
 	if not online:
 		await get_tree().create_timer(1.3).timeout
 		if state != State.BATTLE:
@@ -491,7 +494,7 @@ func fire_at(cell: Vector2i) -> void:
 		return
 	if _any_hit(outcome):
 		hud.toast(Game.t("extra_shot"), Color(1, 0.9, 0.5), "", 0.7)
-		_begin_my_turn()
+		_begin_my_turn(true)
 	else:
 		_begin_enemy_turn()
 
@@ -503,7 +506,7 @@ func _after_enemy_outcome(outcome: Dictionary) -> void:
 		_game_over(false)
 		return
 	if _any_hit(outcome):
-		_begin_enemy_turn()
+		_begin_enemy_turn(true)
 	else:
 		_begin_my_turn()
 
