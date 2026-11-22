@@ -1,0 +1,12 @@
+.godot/
+build/
+*.tmp
+legacy/signing.keystore
+legacy/signing-key-info.txt
+legacy/platforms/
+legacy/node_modules/
+server/node_modules/
+renders/tmp/
+renders/game/
+renders/*.log
+*.import.tmp

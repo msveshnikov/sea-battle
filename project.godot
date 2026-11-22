@@ -1,0 +1,46 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+
+config/name="Steel Tide"
+config/description="Sea Battle in 3D: fleets, shells, fire and online duels"
+config/version="2.0.0"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "Mobile")
+boot_splash/bg_color=Color(0.02, 0.07, 0.12, 1)
+boot_splash/show_image=false
+config/icon="res://assets/ui/icon.png"
+
+[autoload]
+
+Game="*res://scripts/game.gd"
+Sfx="*res://scripts/sfx.gd"
+Net="*res://scripts/net.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=4
+window/energy_saving/keep_screen_on=true
+
+[gui]
+
+theme/custom_font="res://assets/fonts/Rubik.ttf"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=false
+pointing/emulate_mouse_from_touch=true
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method.web="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+anti_aliasing/quality/msaa_3d=0
+environment/defaults/default_clear_color=Color(0.05, 0.1, 0.16, 1)
