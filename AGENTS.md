@@ -12,6 +12,9 @@
 - Concept art: `concept/` (ChatGPT chat "Generate Naval Game Art" holds the style reference).
 - Save file: `user://settings.cfg` (Windows: `%APPDATA%\Godot\app_userdata\Sea Battle\`).
 
+- Google Play: app «Sea Battle 3D: Fleet Online» / «Морской бой 3D: флот онлайн», package com.maxsoft.seabattle, Play Console app id 4975254520482593102 (dev 5957945224586801272). Upload key = the old Cordova key: `~/.android/seabattle-upload.jks` (alias my-key-alias, password in seabattle-upload.txt beside it; same SHA1 29:92:C3:… as legacy/signing.keystore). Godot reads it from `.godot/export_credentials.cfg` (preset.3, not in git). AAB preset «Android Play» → build/play/SeaBattle.aab (Gradle, target SDK 36, v7a+arm64+x86_64; needs `android/` build template, git-ignored). Bump version/code in BOTH Android presets.
+- Store: texts store/listing.md, graphics `python scripts/tools/play_store.py` → renders/play (shots from `-- --autotest --shots-only --lang=ru|en --mood=… --resolution 1920x1080`), privacy https://maxims.top/seabattle/privacy.html (store/privacy.html). Icon, banners and title screenshot are declared AI-made.
+
 ## Build / test / deploy
 See README.md (Rebuild, Test, Build and deploy). Always: autotest → look at screenshots → export all three → scp web + APK → `curl -sI https://maxims.top/seabattle/index.pck`.
 
