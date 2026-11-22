@@ -173,6 +173,7 @@ func to_title() -> void:
 		Net.leave()
 	online = false
 	state = State.TITLE
+	Sfx.music("menu")
 	_set_mood(["sunset", "day", "night"].pick_random())
 	_spawn_title_fleet()
 	cam.go_preset(arena.layout["cameras"]["title"], 1.5)
@@ -206,6 +207,7 @@ func start_ai_game() -> void:
 
 func _begin_placement() -> void:
 	state = State.PLACEMENT
+	Sfx.music("menu")
 	cam.orbit_enabled = true
 	cam.go_preset(arena.layout["cameras"]["placement"], 1.6)
 	arena.player_grid.set_active(true)
@@ -365,6 +367,7 @@ func _online_first_turn() -> bool:
 
 func _start_battle(i_start: bool) -> void:
 	state = State.BATTLE
+	Sfx.music("battle")
 	start_time = Time.get_ticks_msec()
 	hud.show_battle(arcade)
 	hud.set_vs("%s  %s  %s" % [Game.player_name if Game.player_name != "" else Game.t("you"), Game.t("vs"), opponent_name])

@@ -1,5 +1,11 @@
 extends Node
 ## Autoload "Sfx": one-shot sounds (2D and positional), sea ambience and music.
+## Music (CC0, OpenGameArt, see assets/CREDITS.md): a calm track for menus and placement,
+## a playlist for battles; switching crossfades between two players.
+
+const MENU_TRACKS := ["res://assets/music/song_of_the_sea.ogg"]
+const BATTLE_TRACKS := ["res://assets/music/battle_theme_a.mp3", "res://assets/music/war_on_water_1.ogg",
+	"res://assets/music/war_on_water_3.ogg"]
 
 const NAMES := ["cannon", "explosion", "splash", "whistle", "click", "hover", "place", "sonar", "plane",
 	"torpedo", "alarm", "victory", "defeat"]
@@ -7,6 +13,10 @@ const NAMES := ["cannon", "explosion", "splash", "whistle", "click", "hover", "p
 var _streams := {}
 var _pool: Array[AudioStreamPlayer] = []
 var _music: AudioStreamPlayer
+var _music_b: AudioStreamPlayer
+var _music_kind := "menu"
+var _battle_index := randi() % 3
+var _fade: Tween
 var _sea: AudioStreamPlayer
 var _unlocked := false
 
@@ -23,9 +33,10 @@ func _ready() -> void:
 		_pool.append(p)
 	_music = AudioStreamPlayer.new()
 	add_child(_music)
-	var m: AudioStreamWAV = load("res://assets/audio/music.wav")
-	if m:
-		_music.stream = m
+	_music_b = AudioStreamPlayer.new()
+	add_child(_music_b)
+	for p in [_music, _music_b]:
+		p.finished.connect(_on_music_finished.bind(p))
 	_sea = AudioStreamPlayer.new()
 	add_child(_sea)
 	var sea: AudioStreamWAV = load("res://assets/audio/sea_loop.wav")
@@ -46,16 +57,65 @@ func _input(event: InputEvent) -> void:
 func start_loops() -> void:
 	if Game.flag("autotest") or Game.flag("mute"):
 		return
-	if _music.stream and not _music.playing:
-		_music.play()
+	if not _music.playing and not _music_b.playing:
+		_start_track(_music, _pick_track(), 0.0)
 	if _sea.stream and not _sea.playing:
 		_sea.play()
 
 
 func apply_volume() -> void:
-	_music.volume_db = linear_to_db(max(Game.music_volume, 0.0001) * 0.55)
+	if _fade == null or not _fade.is_running():
+		for p in [_music, _music_b]:
+			if p.playing:
+				p.volume_db = _music_db()
 	_sea.volume_db = linear_to_db(max(Game.sfx_volume, 0.0001) * 0.35)
 	_music.stream_paused = Game.music_volume <= 0.01
+	_music_b.stream_paused = Game.music_volume <= 0.01
+
+
+func _music_db() -> float:
+	return linear_to_db(maxf(Game.music_volume, 0.0001) * 0.7)
+
+
+func _pick_track() -> String:
+	if _music_kind == "battle":
+		_battle_index = (_battle_index + 1) % BATTLE_TRACKS.size()
+		return BATTLE_TRACKS[_battle_index]
+	return MENU_TRACKS.pick_random()
+
+
+## "menu" or "battle": crossfade to that kind of music (no-op if it is already playing).
+func music(kind: String) -> void:
+	if kind == _music_kind and (_music.playing or _music_b.playing):
+		return
+	_music_kind = kind
+	if Game.flag("autotest") or Game.flag("mute") or (OS.has_feature("web") and not _unlocked):
+		return
+	var old := _music if _music.playing else _music_b
+	var new := _music_b if old == _music else _music
+	_start_track(new, _pick_track(), 1.5, old)
+
+
+func _start_track(p: AudioStreamPlayer, path: String, fade: float, old: AudioStreamPlayer = null) -> void:
+	var st: AudioStream = load(path)
+	if st == null:
+		return
+	p.stream = st
+	p.volume_db = -40.0 if fade > 0.0 else _music_db()
+	p.play()
+	if fade > 0.0:
+		if _fade:
+			_fade.kill()
+		_fade = create_tween().set_parallel(true)
+		_fade.tween_property(p, "volume_db", _music_db(), fade)
+		if old and old.playing:
+			_fade.tween_property(old, "volume_db", -40.0, fade)
+			_fade.chain().tween_callback(old.stop)
+
+
+## Battle tracks follow each other; the menu track simply repeats.
+func _on_music_finished(p: AudioStreamPlayer) -> void:
+	_start_track(p, _pick_track(), 0.0)
 
 
 func play(name: String, volume := 1.0, pitch := 1.0) -> void:

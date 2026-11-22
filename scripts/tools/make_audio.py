@@ -257,6 +257,6 @@ if __name__ == "__main__":
     for name, fn in [("cannon", cannon), ("explosion", explosion), ("splash", splash), ("whistle", whistle),
                      ("click", click), ("hover", hover), ("place", place), ("sonar", sonar), ("plane", plane),
                      ("torpedo", torpedo), ("alarm", alarm), ("victory", victory), ("defeat", defeat),
-                     ("sea_loop", sea_loop), ("music", music_loop)]:
+                     ("sea_loop", sea_loop)]:  # music: CC0 tracks in assets/music (see CREDITS)
         save(name, fn())
     print("DONE")
