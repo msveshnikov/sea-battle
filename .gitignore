@@ -10,3 +10,4 @@ renders/tmp/
 renders/game/
 renders/*.log
 *.import.tmp
+android/

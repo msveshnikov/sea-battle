@@ -123,6 +123,8 @@ func _init() -> void:
 		else:
 			flags[a] = true
 	_load()
+	if flags.has("lang"):
+		lang = str(flags["lang"])
 	if lang == "":
 		lang = "ru" if OS.get_locale_language() in ["ru", "uk", "be", "kk"] else "en"
 

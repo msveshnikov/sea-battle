@@ -31,7 +31,7 @@ func shot(name: String) -> void:
 		main.hud.visible = false  # clean captures for store/site images
 	await RenderingServer.frame_post_draw
 	var img := get_viewport().get_texture().get_image()
-	var tag := str(Game.flags.get("mood", "x")) + ("_net%d" % Net.my_id if Game.flag("online") else "")
+	var tag := str(Game.flags.get("lang", "")) + str(Game.flags.get("mood", "x")) + ("_net%d" % Net.my_id if Game.flag("online") else "")
 	img.save_png(out_dir.path_join("%s_%s.png" % [tag, name]))
 	_log("shot " + name)
 
