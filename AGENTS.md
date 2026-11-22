@@ -1,6 +1,8 @@
 # AGENTS.md — Sea Battle 3D (Морской бой)
 
 ## Where everything lives
+- GitHub (public): https://github.com/msveshnikov/sea-battle — releases carry SeaBattle.exe + SeaBattle.apk (site links to releases/latest/download/SeaBattle.exe).
+- Site card: maxims.top index.html (source C:\My-progs\Godot\maxims), image img/seabattle.jpg.
 - Project: `C:\My-progs\Godot\seabattle` (Godot 4.7 project in the root; old Cordova game in `legacy/`, git-ignored keystore there).
 - Live web build: https://maxims.top/seabattle/ → server `ubuntu@severance.lol:/var/www/maxims/seabattle/`
 - APK: https://maxims.top/seabattle/SeaBattle.apk (debug-signed, package `com.maxsoft.seabattle`, version 2.0.0 / code 20000).

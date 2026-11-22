@@ -14,7 +14,9 @@ marker buoys, hits set hidden ships on fire, sunk ships surface burning and go u
 - **Time of day**: day, sunset, night (searchlights, lit windows, lighthouse beam, buoy lamps).
 - English / Russian UI. Windows, Web, Android.
 
-Play: https://maxims.top/seabattle/ · APK: https://maxims.top/seabattle/SeaBattle.apk
+Play: https://maxims.top/seabattle/ · APK: https://maxims.top/seabattle/SeaBattle.apk · Windows: https://github.com/msveshnikov/sea-battle/releases/latest/download/SeaBattle.exe
+
+![Screenshots](renders/showcase.jpg)
 
 ## How it is made (game-pipeline)
 
