@@ -8,7 +8,7 @@ config/name_localized={
 "ru": "Морской бой"
 }
 config/description="Sea Battle in 3D: fleets, shells, fire and online duels"
-config/version="2.0.1"
+config/version="2.0.2"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 boot_splash/bg_color=Color(0.02, 0.07, 0.12, 1)

@@ -151,7 +151,7 @@ func show_title() -> void:
 		show_title(), Color(0.2, 0.3, 0.42), 80)
 	s.add_child(lang)
 	UiKit.place(lang, Control.PRESET_TOP_RIGHT, Vector2(20, 20))
-	var ver := UiKit.label("v" + Game.VERSION + "  •  © 2026 MaxSoft", 15, Color(1, 1, 1, 0.6))
+	var ver := UiKit.label("v" + Game.version + "  •  © 2026 MaxSoft", 15, Color(1, 1, 1, 0.6))
 	s.add_child(ver)
 	UiKit.place(ver, Control.PRESET_BOTTOM_LEFT, Vector2(16, 12))
 	logo.pivot_offset = Vector2(600, 50)

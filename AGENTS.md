@@ -5,7 +5,7 @@
 - Site card: maxims.top index.html (source C:\My-progs\Godot\maxims), image img/seabattle.jpg.
 - Project: `C:\My-progs\Godot\seabattle` (Godot 4.7 project in the root; old Cordova game in `legacy/`, git-ignored keystore there).
 - Live web build: https://maxims.top/seabattle/ → server `ubuntu@severance.lol:/var/www/maxims/seabattle/`
-- APK: https://maxims.top/seabattle/SeaBattle.apk (debug-signed, package `com.maxsoft.seabattle`, version 2.0.1 / code 20001).
+- APK: https://maxims.top/seabattle/SeaBattle.apk (debug-signed, package `com.maxsoft.seabattle`, version 2.0.2 / code 20002).
 - Multiplayer relay: `wss://severance.lol/village-ws` (shared with Gacha Village; source `C:\My-progs\Godot\village\server`). Rooms: `seabattle-quick-<mode>`, `seabattle-room-<CODE>`.
 - Blender 5.2: `C:\Program Files\Blender Foundation\Blender 5.2\blender.exe`
 - Godot 4.7.2: `C:\Users\msves\OneDrive\Рабочий стол\Godot_v4.7.2-stable_win64.exe`

@@ -2,7 +2,7 @@ extends Node
 ## Autoload "Game": settings, strings (EN/RU), stats, command-line flags.
 
 const SAVE_PATH := "user://settings.cfg"
-const VERSION := "2.0.0"
+var version := str(ProjectSettings.get_setting("application/config/version", ""))
 
 const SHIP_KINDS := ["battleship", "cruiser", "destroyer", "patrol"]
 const SHIP_SIZE := {"battleship": 4, "cruiser": 3, "destroyer": 2, "patrol": 1}
