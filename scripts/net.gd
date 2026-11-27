@@ -43,7 +43,9 @@ func join(room_name: String) -> void:
 	var server := _server
 	if server.count("/") == 2:
 		server += "/"
-	var url := server + ("&" if "?" in server else "?") + "room=" + room.uri_encode()
+	var version := str(ProjectSettings.get_setting("application/config/version", ""))
+	var query := "room=%s&os=%s&v=%s" % [room.uri_encode(), OS.get_name().uri_encode(), version.uri_encode()]
+	var url := server + ("&" if "?" in server else "?") + query
 	_socket = WebSocketPeer.new()
 	var err := _socket.connect_to_url(url)
 	_active = err == OK
